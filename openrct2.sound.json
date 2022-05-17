@@ -1,0 +1,25 @@
+{
+    "id": "openrct2.sound",
+    "version": "1.0",
+    "objects": [
+        {
+            "id": "rct2.audio.base",
+            "samples": [
+                "$[0..32]",
+                "SoundFX/pop.flac",
+                "$[0..4]",
+                "SoundFX/news.flac",
+                "$[0..22]",
+                "SoundFX/crowd.flac"
+            ]
+        }
+    ],
+    "strings": {
+        "name": {
+            "en-GB": "OpenRCT2 Sound FX"
+        },
+        "description": {
+            "en-GB": "Open source sound effects for OpenRCT2."
+        }
+    }
+}
