@@ -5,11 +5,25 @@
         {
             "id": "rct2.audio.base",
             "samples": [
-                "$[0..32]",
+                "$[0..17]",
+                "SoundFX/train_whistle_1_cp_railroad.flac",
+                "SoundFX/train_whistle_depart_cp_railroad.flac",
+                "$[0..7]",
+                "SoundFX/rain.flac",
+                "SoundFX/thunder_3.flac",
+                "SoundFX/thunder_4.flac",
+                "$[0..1]",
                 "SoundFX/pop.flac",
-                "$[0..4]",
+                "$[0..1]",
+                "SoundFX/flush.flac",
+                "$[0..1]",
                 "SoundFX/news.flac",
-                "$[0..22]",
+                "$[0..12]",
+                "SoundFX/wood_rc_lift_cp_blue_streak.flac",
+                "$[0..1]",
+                "SoundFX/bm_rc_lift_cp_rougarou.flac",
+                "SoundFX/bm_rc_roar_cp_rougarou.flac",
+                "$[0..4]",
                 "SoundFX/crowd.flac"
             ]
         }
