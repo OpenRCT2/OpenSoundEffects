@@ -5,7 +5,7 @@ Credits for samples:
 Karst van Galen Last (AuraSpecs):
 news, pop, rain, flush, thunder_1, thunder_2, thunder_3, thunder_4, hydrolics_tow_truck, hydrolics_wh_lost_gravity, hydrolics_el_abyssus, hydrolics_wh_space_shot, scream_el_zadra, 
 train_whistle_1_cp_railroad, train_whistle_2_cp_railroad, train_whistle_3_cp_railroad, train_whistle_depart_cp_railroad, bm_rc_lift_cp_rougarou, bm_rc_roar_cp_rougarou,
-wood_rc_lift_cp_bluestreak,
+wood_rc_lift_cp_bluestreak, scream_el_zadra, hyper_rc_lift_cp_magnum_xl_200,
 
 Ted John (IntelOrca):
 crowd, 
