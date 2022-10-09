@@ -1,0 +1,4 @@
+# Lists sound files and their authors, editors, and original licenses
+cash1.flac - "Cash Register,Sale Sound, old shop.stereo.wav" by "Dan_AudioFile". Edited by "GeneralCamo". Original License: Creative Commons Attribution 4.0 (CC BY 4.0)
+brake_fix.flac - Created from multiple samples and edited by "GeneralCamo". Original samples: "HAMMER_2.wav" by "pablodavilla". Original License: Creative Commons Zero (CC0 1.0). "Hammer and anvil" by "Duasun". Original License: Creative Commons Zero (CC0 1.0)
+dinghy_slide.flac - "Mountain River.wav" by "tosha73". Edited by "GeneralCamo". Original License: Creative Commons Attribution 4.0 (CC BY 4.0)
