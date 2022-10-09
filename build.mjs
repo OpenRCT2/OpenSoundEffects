@@ -9,6 +9,23 @@ const verbose = process.argv.indexOf('--verbose') != -1;
 async function main() {
     await mkdir('out');
     await mkdir('temp');
+
+    await createAssetPack();
+    await createPackage();
+    await rm('temp');
+}
+
+async function createPackage() {
+    const packageFileName = "artifacts/opensound.zip";
+    console.log(`Creating package: ${packageFileName}`);
+    const contents = await getContents("out", {
+        includeDirectories: true,
+        includeFiles: true
+    });
+    await zip("out", path.join('..', packageFileName), contents);
+}
+
+async function createAssetPack() {
     const workDir = 'temp';
 
     const dir = '';
@@ -40,13 +57,12 @@ async function main() {
     const outJsonPath = path.join(workDir, 'manifest.json');
     await writeJsonFile(outJsonPath, root);
 
-    const parkapPath = path.join('../out', root.id + '.parkap');
+    const parkapPath = path.join('../out/assetpack', root.id + '.parkap');
     const contents = await getContents(workDir, {
         includeDirectories: true,
         includeFiles: true
     });
     await zip(workDir, parkapPath, contents);
-    await rm('temp');
 }
 
 function changeExtension(path, newExtension) {
@@ -83,7 +99,8 @@ function writeJsonFile(path, data) {
 }
 
 async function zip(cwd, outputFile, paths) {
-    await rm(outputFile);
+    await ensureDirectoryExists(path.join(cwd, outputFile));
+    await rm(path.join(cwd, outputFile));
     if (platform() == 'win32') {
         await startProcess('7z', ['a', '-r', '-tzip', outputFile, ...paths], cwd);
     } else {
@@ -132,7 +149,10 @@ function mkdir(path) {
     return new Promise((resolve, reject) => {
         fs.access(path, error => {
             if (error) {
-                fs.mkdir(path, err => {
+                if (verbose) {
+                    console.log(`Creating directory ${path}`);
+                }
+                fs.mkdir(path, { recursive: true }, err => {
                     if (err) {
                         reject(err);
                     } else {
