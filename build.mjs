@@ -10,7 +10,8 @@ async function main() {
     await mkdir('out');
     await mkdir('temp');
 
-    await createAssetPack();
+    await createObject('openrct2.audio.additional');
+    await createAssetPack('openrct2.sound');
     await createPackage();
     await rm('temp');
 }
@@ -25,10 +26,37 @@ async function createPackage() {
     await zip("out", path.join('..', packageFileName), contents);
 }
 
-async function createAssetPack() {
+async function createObject(dir) {
+    await rm('temp');
+    await mkdir('temp');
     const workDir = 'temp';
 
-    const dir = '';
+    const root = await readJsonFile(path.join(dir, 'object.json'));
+    console.log(`Creating ${root.id}`);
+
+    const samples = root.samples;
+    for (let i = 0; i < samples.length; i++) {
+        const newPath = changeExtension(samples[i], '.wav');
+        const srcPath = path.join(dir, samples[i]);
+        const dstPath = path.join(workDir, newPath);
+        await encodeSample(dstPath, srcPath);
+        samples[i] = newPath;
+    }
+
+    const outJsonPath = path.join(workDir, 'object.json');
+    await writeJsonFile(outJsonPath, root);
+
+    const parkobjPath = path.join('../out/object/official/audio', root.id + '.parkobj');
+    const contents = await getContents(workDir, {
+        includeDirectories: true,
+        includeFiles: true
+    });
+    await zip(workDir, parkobjPath, contents);
+}
+
+async function createAssetPack(dir) {
+    const workDir = 'temp';
+
     const root = await readJsonFile(path.join(dir, 'openrct2.sound.json'));
     console.log(`Creating ${root.id}`);
     for (const obj of root.objects) {
@@ -38,17 +66,7 @@ async function createAssetPack() {
                 const newPath = changeExtension(sample, '.wav');
                 const srcPath = path.join(dir, sample);
                 const dstPath = path.join(workDir, newPath);
-                ensureDirectoryExists(dstPath);
-                await startProcess(
-                    'ffmpeg', [
-                    '-i', srcPath,
-                    '-acodec', 'pcm_s16le',
-                    '-ar', '22050',
-                    '-ac', '1',
-                    '-map_metadata', '-1',
-                    '-y',
-                    dstPath
-                ]);
+                await encodeSample(dstPath, srcPath);
                 obj.samples[i] = newPath;
             }
         }
@@ -106,6 +124,20 @@ async function zip(cwd, outputFile, paths) {
     } else {
         await startProcess('zip', ['-r', outputFile, ...paths], cwd);
     }
+}
+
+async function encodeSample(dstPath, srcPath) {
+    await ensureDirectoryExists(dstPath);
+    await startProcess(
+        'ffmpeg', [
+        '-i', srcPath,
+        '-acodec', 'pcm_s16le',
+        '-ar', '22050',
+        '-ac', '1',
+        '-map_metadata', '-1',
+        '-y',
+        dstPath
+    ]);
 }
 
 function startProcess(name, args, cwd) {
