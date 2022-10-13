@@ -1,0 +1,53 @@
+{
+    "id": "openrct2.sound",
+    "version": "1.0",
+    "objects": [
+        {
+            "id": "rct2.audio.base",
+            "samples": [
+                "$[0..3]",
+                "samples/click_in.flac",
+                "samples/click_out.flac",
+                "$[0..3]",
+                "samples/scream_el_zadra.flac",
+                "$[0..6]",
+                "samples/train_whistle_1_cp_railroad.flac",
+                "samples/train_whistle_depart_cp_railroad.flac",
+                "$[0..1]",
+                "samples/hydrolics_wh_lost_gravity.flac",
+                "samples/hydrolics_wh_space_shot.flac",
+                "$[0..3]",
+                "samples/rain.flac",
+                "samples/thunder_3.flac",
+                "samples/thunder_4.flac",
+                "$[0..1]",
+                "samples/pop.flac",
+                "$[0..1]",
+                "samples/flush.flac",
+                "samples/click_in.flac",
+                "$[0..0]",
+                "samples/news.flac",
+                "$[0..7]",
+                "samples/hydrolics_mm_ninja.flac",
+                "samples/hydrolics_el_abyssus.flac",
+                "samples/error.flac",
+                "samples/hydrolics_tow_truck.flac",
+                "samples/hyper_rc_lift_cp_magnum_xl_200.flac",
+                "samples/wood_rc_lift_cp_blue_streak.flac",
+                "$[0..1]",
+                "samples/bm_rc_lift_cp_rougarou.flac",
+                "samples/bm_rc_roar_cp_rougarou.flac",
+                "$[0..4]",
+                "samples/crowd.flac"
+            ]
+        }
+    ],
+    "strings": {
+        "name": {
+            "en-GB": "OpenRCT2 Sound FX"
+        },
+        "description": {
+            "en-GB": "Open source sound effects for OpenRCT2."
+        }
+    }
+}
