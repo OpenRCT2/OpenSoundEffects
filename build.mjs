@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import fs from 'fs';
+import fs, { rmdir } from 'fs';
 import path from 'path';
 import { spawn } from 'child_process';
 import { platform } from 'os';
@@ -8,8 +8,6 @@ const verbose = process.argv.indexOf('--verbose') != -1;
 
 async function main() {
     await mkdir('out');
-    await mkdir('temp');
-
     await createObject('openrct2.audio.additional');
     await createAssetPack('openrct2.sound');
     await createPackage();
@@ -27,9 +25,8 @@ async function createPackage() {
 }
 
 async function createObject(dir) {
-    await rm('temp');
-    await mkdir('temp');
     const workDir = 'temp';
+    await rmmkdir(workDir);
 
     const root = await readJsonFile(path.join(dir, 'object.json'));
     console.log(`Creating ${root.id}`);
@@ -56,6 +53,7 @@ async function createObject(dir) {
 
 async function createAssetPack(dir) {
     const workDir = 'temp';
+    await rmmkdir(workDir);
 
     const root = await readJsonFile(path.join(dir, 'openrct2.sound.json'));
     console.log(`Creating ${root.id}`);
@@ -175,6 +173,11 @@ function startProcess(name, args, cwd) {
 async function ensureDirectoryExists(filename) {
     const dirname = path.dirname(filename);
     await mkdir(dirname);
+}
+
+async function rmmkdir(path) {
+    await rm(path);
+    await mkdir(path);
 }
 
 function mkdir(path) {
