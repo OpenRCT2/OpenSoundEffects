@@ -1,0 +1,20 @@
+{
+    "id": "openrct2.audio.additional",
+    "authors": [
+        "OpenRCT2 Team"
+    ],
+    "version": "1.0",
+    "sourceGame": [
+        "openrct2"
+    ],
+    "objectType": "audio",
+    "samples": [
+        "samples/hybrid_rc_lift_wh_untamed.flac",
+        "samples/hybrid_rc_roar_wh_untamed.flac"
+    ],
+    "strings": {
+        "name": {
+            "en-GB": "Additional audio for OpenRCT2."
+        }
+    }
+}
