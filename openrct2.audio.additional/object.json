@@ -10,7 +10,8 @@
     "objectType": "audio",
     "samples": [
         "samples/hybrid_rc_lift_wh_untamed.flac",
-        "samples/hybrid_rc_roar_wh_untamed.flac"
+        "samples/hybrid_rc_roar_wh_untamed.flac",
+        "samples/log_flume_lift_pl_dino.flac"
     ],
     "strings": {
         "name": {
