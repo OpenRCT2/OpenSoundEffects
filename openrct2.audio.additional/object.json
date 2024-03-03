@@ -15,7 +15,8 @@
     ],
     "strings": {
         "name": {
-            "en-GB": "Additional audio for OpenRCT2."
+            "en-GB": "Additional audio for OpenRCT2.",
+            "ca-ES": "Àudio addicional per a l’OpenRCT2"
         }
     }
 }
